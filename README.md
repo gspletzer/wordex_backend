@@ -6,7 +6,7 @@ Wordle built in Elixir.
 
 1. Clone the repo to your local machine.
 2. Create a new branch using the following naming structure: `username-task`. (Ex. `gspletzer-update-readme`)
-3. Commit and push changes with short, readable message. (Ex. `(chore) added instructions to the readme`)
+3. Commit and push changes with short, readable message. (Ex. `chore: added instructions to the readme`). Find more information on conventional commits [here](https://www.conventionalcommits.org/en/v1.0.0/).
 4. Open a PR on Github once your changes are tested and ready for review.
 5. PR can be merged to `master` following approval from a fellow contributor.
 
