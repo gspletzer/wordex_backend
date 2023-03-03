@@ -1,21 +1,17 @@
 # Wordex
 
-**TODO: Add description**
+Wordle, but in Elixir.
 
-## Installation
+## How to Contribute
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `wordex` to your list of dependencies in `mix.exs`:
+1. Clone the repo to your local machine.
+2. Create a new branch using the following naming structure: `username-task`. (Ex. `gspletzer-update-readme`)
+3. Commit and push changes with short, readable message. (Ex. `chore: added instructions to the readme`). Find more information on conventional commits [here](https://www.conventionalcommits.org/en/v1.0.0/).
+4. Open a PR on Github once your changes are tested and ready for review.
+5. PR can be merged to `master` following approval from a fellow contributor.
 
-```elixir
-def deps do
-  [
-    {:wordex, "~> 0.1.0"}
-  ]
-end
-```
+## Testing
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/wordex](https://hexdocs.pm/wordex).
+A key to good development is good testing, so be sure to add new tests for new features and update relevant tests when modifying existing code.
 
+The [mix_test_interactive](https://github.com/randycoulman/mix_test_interactive) dependency has been added to the repository. This allows tests to run automatically with each save while you work. You can also use it to isolate your testing to for a specific file. If you wish to use this, just run `mix deps.get` once you are in your `wordex` directory.
