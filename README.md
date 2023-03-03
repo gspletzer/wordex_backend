@@ -1,6 +1,6 @@
 # Wordex
 
-Wordle built in Elixir.
+Wordle, but in Elixir.
 
 ## How to Contribute
 
