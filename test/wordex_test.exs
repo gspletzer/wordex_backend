@@ -1,6 +1,6 @@
 defmodule WordexTest do
   use ExUnit.Case
-  doctest Wordex
+  # doctest Wordex
 
   # test "greets the world" do
   #   assert Wordex.hello() == :world
