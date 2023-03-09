@@ -12,7 +12,7 @@ defmodule Wordex.Game.Score do
   def new(answer, guess) do
     if Guess.valid_guess?(guess) == true,
       do: %__MODULE__{answer: answer, guess: guess},
-      else: {:error, "Guess is not valid. Try again."}
+      else: raise("Guess is not valid. Try again.")
   end
 
   @spec match_greens(score :: t) :: [comparison_score()]
@@ -31,6 +31,6 @@ defmodule Wordex.Game.Score do
   end
 
   @spec match_yellows([comparison_score()]) :: [comparison_score()]
-  def match_yellows(current_score) do
+  def match_yellows(score) do
   end
 end
