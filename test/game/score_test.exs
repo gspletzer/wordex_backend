@@ -19,29 +19,30 @@ defmodule Wordex.Game.ScoreTest do
     # end
   end
 
-  describe "match_greens/1" do
-    test "returns list where tuples with matching x and y values are followed by :green" do
+  describe "show/1" do
+    test "returns list with tuples labeled :green for correct guesses
+      and :yellow for partially correct" do
       result = [
-        {"h", "p", :gray},
-        {"a", "a", :green},
-        {"p", "t", :gray},
-        {"p", "t", :gray},
-        {"y", "y", :green}
+        {"p", :yellow},
+        {"a", :green},
+        {"t", :gray},
+        {"t", :gray},
+        {"y", :green}
       ]
 
-      assert result == Score.new("happy", "patty") |> Score.match_greens()
+      assert result == Score.new("happy", "patty") |> Score.show()
     end
 
-    test "returns list where no tuples display :green if no x and y values match in the tuple" do
+    test "returns list where no tuples display :green or :yellow if no guess letters matched" do
       result = [
-        {"h", "m", :gray},
-        {"a", "o", :gray},
-        {"p", "u", :gray},
-        {"p", "s", :gray},
-        {"y", "e", :gray}
+        {"m", :gray},
+        {"o", :gray},
+        {"u", :gray},
+        {"s", :gray},
+        {"e", :gray}
       ]
 
-      assert result == Score.new("happy", "mouse") |> Score.match_greens()
+      assert result == Score.new("happy", "mouse") |> Score.show()
     end
   end
 end
