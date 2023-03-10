@@ -1,4 +1,4 @@
-defmodule Wordex.Game.Guess do
+defmodule Wordex.Game.Game do
   @type guess() :: String.t()
 
   @spec valid_guess?(guess) :: Boolean.t()
