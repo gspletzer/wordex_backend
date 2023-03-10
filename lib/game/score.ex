@@ -1,16 +1,16 @@
 defmodule Wordex.Game.Score do
   defstruct [:answer, :guess]
   @type answer() :: String.t()
-  @type guess() :: String.t()
+  @type guess() :: Game.guess()
   @type color() :: :gray | :green | :yellow
   @type result() :: {String.t(), color()}
   @type t :: %__MODULE__{answer: answer(), guess: guess()}
 
-  alias Wordex.Game.Guess
+  alias Wordex.Game.Game
 
   @spec new(answer, guess) :: t | {:error, String.t()}
   def new(answer, guess) do
-    if Guess.valid_guess?(guess) == true,
+    if Game.valid_guess?(guess) == true,
       do: %__MODULE__{answer: answer, guess: guess},
       else: raise("Guess is not valid. Try again.")
   end
