@@ -40,10 +40,10 @@ defmodule Wordex.Game.Score do
   defp mark_remaining_letters(_letters, [], acc), do: Enum.reverse(acc)
 
   defp mark_remaining_letters(letters, [{y, z} = _match | matched_letters], acc) do
-    if z == :green || Enum.empty?(letters) || hd(letters) != y do
+    if z == :green || Enum.empty?(letters) || not (y in letters) do
       mark_remaining_letters(letters, matched_letters, [{y, z} | acc])
     else
-      mark_remaining_letters(tl(letters), matched_letters, [{y, :gray} | acc])
+      mark_remaining_letters(List.delete(letters, y), matched_letters, [{y, :gray} | acc])
     end
   end
 end
