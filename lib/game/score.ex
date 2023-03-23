@@ -6,13 +6,9 @@ defmodule Wordex.Game.Score do
   @type scored() :: {String.t(), color()}
   @type t :: %__MODULE__{answer: answer(), guess: guess()}
 
-  alias Wordex.Game.Game
-
   @spec new(answer, guess) :: t | {:error, String.t()}
   def new(answer, guess) do
-    if Game.valid_guess?(guess) == true,
-      do: %__MODULE__{answer: answer, guess: guess},
-      else: raise("Guess is not valid. Try again.")
+    %__MODULE__{answer: answer, guess: guess}
   end
 
   @spec show(score :: t) :: [result :: scored()]

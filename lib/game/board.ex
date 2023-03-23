@@ -6,11 +6,9 @@ defmodule Wordex.Game.Board do
 
   alias Wordex.Game.Score
 
-  @spec new(words :: List.t()) :: board :: t
-  def new(words \\ ~w[happy patty mouse guess words hello]) do
-    answer = Enum.random(words)
-
-    %__MODULE__{scores: [], answer: answer}
+  # @spec new(words :: List.t()) :: board :: t
+  def new(word) do
+    %__MODULE__{scores: [], answer: word}
   end
 
   @spec guess(board :: t, guess :: String.t()) :: updated_board :: t
