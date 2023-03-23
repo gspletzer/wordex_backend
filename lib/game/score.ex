@@ -3,7 +3,7 @@ defmodule Wordex.Game.Score do
   @type answer() :: String.t()
   @type guess() :: Game.guess()
   @type color() :: :gray | :green | :yellow
-  @type result() :: {String.t(), color()}
+  @type scored() :: {String.t(), color()}
   @type t :: %__MODULE__{answer: answer(), guess: guess()}
 
   alias Wordex.Game.Game
@@ -15,7 +15,7 @@ defmodule Wordex.Game.Score do
       else: raise("Guess is not valid. Try again.")
   end
 
-  @spec show(score :: t) :: [result :: [result()]]
+  @spec show(score :: t) :: [result :: scored()]
   def show(%{answer: answer, guess: guess} = _score) do
     a_list = String.graphemes(answer)
     g_list = String.graphemes(guess)
