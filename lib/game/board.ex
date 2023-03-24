@@ -1,23 +1,24 @@
 defmodule Wordex.Game.Board do
   defstruct [:scores, :answer]
   @type answer :: Score.answer()
+  @type guess :: Score.guess()
   @type score :: Score.scored()
   @type t :: %__MODULE__{scores: [score()], answer: answer()}
 
   alias Wordex.Game.Score
 
   # @spec new(words :: List.t()) :: board :: t
-  def new(word) do
-    %__MODULE__{scores: [], answer: word}
+  def new(word, scores \\ []) do
+    %__MODULE__{scores: scores, answer: word}
   end
 
-  @spec guess(board :: t, guess :: String.t()) :: updated_board :: t
+  @spec guess(board :: t, guess) :: updated_board :: t
   def guess(%__MODULE__{} = board, guess) do
     score = Score.new(board.answer, guess) |> Score.show()
     %{board | scores: [score | board.scores]}
   end
 
-  @spec show(board :: t) :: [scores :: score()]
+  @spec show(board :: t) :: [score]
   def show(%__MODULE__{scores: scores} = _board) do
     Enum.reverse(scores)
   end

@@ -4,19 +4,12 @@ defmodule Wordex.Game.BoardTest do
   alias Wordex.Game.Board
 
   describe "new/1" do
-    test "returns a new board with an empty list of scores and a valid answer from provided list" do
-      words = ~w[happy patty mouse guess words hello]
-      board = Board.new(words)
+    test "returns a new board with an empty list of scores" do
+      answer = "party"
+      board = Board.new(answer)
 
       assert board.scores == []
-      assert board.answer in words
-    end
-
-    test "returns a new board even when no list of words provided" do
-      board = Board.new()
-
-      assert board.scores == []
-      assert String.length(board.answer) == 5
+      assert board.answer == "party"
     end
   end
 

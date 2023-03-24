@@ -1,7 +1,7 @@
 defmodule Wordex.Game.Score do
   defstruct [:answer, :guess]
   @type answer() :: String.t()
-  @type guess() :: Game.guess()
+  @type guess() :: String.t()
   @type color() :: :gray | :green | :yellow
   @type scored() :: {String.t(), color()}
   @type t :: %__MODULE__{answer: answer(), guess: guess()}
@@ -11,7 +11,7 @@ defmodule Wordex.Game.Score do
     %__MODULE__{answer: answer, guess: guess}
   end
 
-  @spec show(score :: t) :: [result :: scored()]
+  @spec show(score :: t) :: [result :: scored]
   def show(%{answer: answer, guess: guess} = _score) do
     a_list = String.graphemes(answer)
     g_list = String.graphemes(guess)
@@ -35,11 +35,11 @@ defmodule Wordex.Game.Score do
 
   defp mark_remaining_letters(_letters, [], acc), do: Enum.reverse(acc)
 
-  defp mark_remaining_letters(letters, [{y, z} = _match | matched_letters], acc) do
-    if z == :green || Enum.empty?(letters) || not (y in letters) do
-      mark_remaining_letters(letters, matched_letters, [{y, z} | acc])
+  defp mark_remaining_letters(missings, [{guess, color} = _match | matched_letters], acc) do
+    if color == :green || Enum.empty?(missings) || not (guess in missings) do
+      mark_remaining_letters(missings, matched_letters, [{guess, color} | acc])
     else
-      mark_remaining_letters(List.delete(letters, y), matched_letters, [{y, :gray} | acc])
+      mark_remaining_letters(List.delete(missings, guess), matched_letters, [{guess, :gray} | acc])
     end
   end
 end
