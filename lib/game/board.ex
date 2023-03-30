@@ -18,6 +18,16 @@ defmodule Wordex.Game.Board do
   end
 
   @spec show(board :: t) :: [scores :: score()]
+
+  def show(
+        %__MODULE__{
+          scores:
+            [[{_, :green}, {_, :green}, {_, :green}, {_, :green}, {_, :green}] | _tail] = _scores
+        } = board
+      ) do
+    IO.puts("Congratulations, you have guessed the answer for the board! #{board.answer}")
+  end
+
   def show(%__MODULE__{scores: scores} = _board) do
     Enum.reverse(scores)
   end
