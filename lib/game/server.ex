@@ -6,14 +6,19 @@ defmodule Wordex.Game.Server do
 
   # Client
 
-  def guess(pid, word) do
+  def guess(pid \\ :wordex, word) do
     GenServer.call(pid, {:guess, word})
+  end
+
+  def start_link(word) do
+    GenServer.start_link(__MODULE__, word, name: :wordex)
   end
 
   # Server (callbacks)
 
   @impl true
   def init(word) do
+    IO.puts("Starting...")
     {:ok, board} = Game.new(word)
     {:ok, board}
   end
