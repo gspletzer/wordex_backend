@@ -2,17 +2,13 @@ defmodule Wordex do
   @moduledoc """
   Documentation for `Wordex`.
   """
+  alias Wordex.Game.Server
 
-  @doc """
-  Hello world.
+  def new(name) do
+    DynamicSupervisor.start_child(:dsup, {Wordex.Game.Server, name})
+  end
 
-  ## Examples
-
-      iex> Wordex.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def guess(name, word) do
+    Server.guess(name, word)
   end
 end
