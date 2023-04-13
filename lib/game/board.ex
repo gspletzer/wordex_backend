@@ -5,10 +5,11 @@ defmodule Wordex.Game.Board do
   @type t :: %__MODULE__{scores: [score()], answer: answer()}
 
   alias Wordex.Game.Score
+  alias Wordex.Game.Wordlist
 
   # @spec new(words :: List.t()) :: board :: t
-  def new(word) do
-    %__MODULE__{scores: [], answer: word}
+  def new() do
+    %__MODULE__{scores: [], answer: Wordlist.generate_word()}
   end
 
   @spec guess(board :: t, guess :: String.t()) :: updated_board :: t
