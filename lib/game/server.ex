@@ -12,9 +12,8 @@ defmodule Wordex.Game.Server do
 
   def start_link(name) do
     IO.puts("Starting #{name}")
-    words = ~w[chase scene stale lover plate llama caked steam]
-    word = Enum.random(words)
-    GenServer.start_link(__MODULE__, word, name: name)
+
+    GenServer.start_link(__MODULE__, %{}, name: name) #TODO: come back to this???
   end
 
   def child_spec(name) do
@@ -24,9 +23,8 @@ defmodule Wordex.Game.Server do
   # Server (callbacks)
 
   @impl true
-  def init(word) do
-    {:ok, board} = Game.new(word)
-    {:ok, board}
+  def init(_word) do
+    Game.new()
   end
 
   @impl true
@@ -35,8 +33,12 @@ defmodule Wordex.Game.Server do
   end
 
   def handle_call({:guess, word}, _from, board) do
-    board = Board.guess(board, word)
-    {:reply, Board.show(board), board}
+    if Game.valid_word?(word) do
+      board = Board.guess(board, word)
+      {:reply, Board.show(board), board}
+    else
+      {:reply, "invalid word", board}
+    end
   end
 
   # @impl true
