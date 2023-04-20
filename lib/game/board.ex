@@ -18,28 +18,32 @@ defmodule Wordex.Game.Board do
     %{board | scores: [score | board.scores]}
   end
 
-  @spec show(board :: t) :: [scores :: score()]
-
   def show(
         %__MODULE__{
           scores:
             [[{_, :green}, {_, :green}, {_, :green}, {_, :green}, {_, :green}] | _tail] = _scores
         } = board
       ) do
-    IO.puts("Congratulations, you have guessed the answer for the board! #{board.answer}")
+    "Congratulations, you have guessed the answer for the board! #{board.answer}"
   end
 
   def show(%__MODULE__{scores: scores} = _board) do
-    Enum.reverse(scores)
+    Enum.reverse(scores) |> color_code_scores()
   end
 
-  #color coding functions in progress using IO.ANSI
-  def color_code(%__MODULE__{scores: scores} = _board) do
-    IO.inspect(scores)
-
+  def color_code_scores(scores) do
+    Enum.map(scores, &color_code_score(&1))
+    |> Enum.join("\n")
   end
 
-  def color_code_letter({letter,color}) do
+  # color coding functions in progress using IO.ANSI
+  def color_code_score(score) do
+    for t <- score do
+      color_code_letter(t)
+    end
+  end
+
+  def color_code_letter({letter, color}) do
     case color do
       :green -> IO.ANSI.format([:green_background, letter])
       :yellow -> IO.ANSI.format([:yellow_background, letter])
