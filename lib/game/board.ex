@@ -32,4 +32,18 @@ defmodule Wordex.Game.Board do
   def show(%__MODULE__{scores: scores} = _board) do
     Enum.reverse(scores)
   end
+
+  #color coding functions in progress using IO.ANSI
+  def color_code(%__MODULE__{scores: scores} = _board) do
+    IO.inspect(scores)
+
+  end
+
+  def color_code_letter({letter,color}) do
+    case color do
+      :green -> IO.ANSI.format([:green_background, letter])
+      :yellow -> IO.ANSI.format([:yellow_background, letter])
+      :gray -> IO.ANSI.format([:light_black_background, letter])
+    end
+  end
 end
