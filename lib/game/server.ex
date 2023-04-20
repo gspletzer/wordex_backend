@@ -10,15 +10,21 @@ defmodule Wordex.Game.Server do
     GenServer.call(pid, {:guess, word})
   end
 
-  def start_link(word) do
-    GenServer.start_link(__MODULE__, word, name: :wordex)
+  def start_link(name) do
+    IO.puts("Starting #{name}")
+    words = ~w[chase scene stale lover plate llama caked steam]
+    word = Enum.random(words)
+    GenServer.start_link(__MODULE__, word, name: name)
+  end
+
+  def child_spec(name) do
+    %{id: name, start: {Wordex.Game.Server, :start_link, [name]}}
   end
 
   # Server (callbacks)
 
   @impl true
   def init(word) do
-    IO.puts("Starting...")
     {:ok, board} = Game.new(word)
     {:ok, board}
   end
