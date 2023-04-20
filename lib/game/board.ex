@@ -19,7 +19,6 @@ defmodule Wordex.Game.Board do
   end
 
   @spec show(board :: t) :: [scores :: score()]
-
   def show(
         %__MODULE__{
           scores:
