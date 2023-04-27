@@ -1,7 +1,7 @@
-defmodule Wordex.Game.GameTest do
+defmodule Wordex.GameTest do
   use ExUnit.Case
 
-  alias Wordex.Game.Game
+  alias Wordex.Game
 
   describe "valid_guess?/1" do
     test "returns true when guess is a real 5 letter word" do
