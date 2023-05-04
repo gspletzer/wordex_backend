@@ -1,4 +1,4 @@
-defmodule Wordex.MixProject do
+defmodule WordexBackend.MixProject do
   use Mix.Project
 
   def project do
@@ -15,7 +15,7 @@ defmodule Wordex.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Wordex.Application, []}
+      mod: {WordexBackend.Application, []}
     ]
   end
 

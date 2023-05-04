@@ -1,4 +1,4 @@
-# Wordex
+# WordexBackend
 
 Wordle, but in Elixir.
 

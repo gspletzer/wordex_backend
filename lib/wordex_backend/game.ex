@@ -1,7 +1,7 @@
-defmodule Wordex.Game do
+defmodule WordexBackend.Game do
   use GenServer
 
-  alias Wordex.Game.Board
+  alias WordexBackend.Game.Board
 
   # Client
 

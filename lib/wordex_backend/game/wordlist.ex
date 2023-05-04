@@ -1,4 +1,4 @@
-defmodule Wordex.Game.Wordlist do
+defmodule WordexBackend.Game.Wordlist do
   # import File
   @wordlist_file "./assets/valid-wordle-words.txt"
 

@@ -1,7 +1,7 @@
-defmodule Wordex.Game.ScoreTest do
+defmodule WordexBackend.Game.ScoreTest do
   use ExUnit.Case
 
-  alias Wordex.Game.Score
+  alias WordexBackend.Game.Score
 
   # doctest Score
 

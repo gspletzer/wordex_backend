@@ -1,4 +1,4 @@
-defmodule Wordex.Game.Score do
+defmodule WordexBackend.Game.Score do
   defstruct [:answer, :guess]
   @type answer() :: String.t()
   @type guess() :: Game.guess()

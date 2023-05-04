@@ -1,11 +1,11 @@
-defmodule Wordex.Game.Board do
+defmodule WordexBackend.Game.Board do
   defstruct [:scores, :answer]
   @type answer :: Score.answer()
   @type score :: Score.scored()
   @type t :: %__MODULE__{scores: [score()], answer: answer()}
 
-  alias Wordex.Game.Score
-  alias Wordex.Game.Wordlist
+  alias WordexBackend.Game.Score
+  alias WordexBackend.Game.Wordlist
 
   @spec new() :: board :: t
   def new() do

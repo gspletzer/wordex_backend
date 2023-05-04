@@ -1,8 +1,8 @@
-defmodule Wordex.Application do
+defmodule WordexBackend.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
-  # alias Wordex.Game
+  # alias WordexBackend.Game
 
   use Application
 
@@ -11,7 +11,7 @@ defmodule Wordex.Application do
     children = [
       {DynamicSupervisor, name: :dsup, strategy: :one_for_one}
 
-      # EXAMPLE: {Wordex.Server, :batman}
+      # EXAMPLE: {WordexBackend.Server, :batman}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -1,7 +1,7 @@
-defmodule Wordex.Game.BoardTest do
+defmodule WordexBackend.Game.BoardTest do
   use ExUnit.Case
 
-  alias Wordex.Game.Board
+  alias WordexBackend.Game.Board
 
   describe "new/1" do
     test "returns a new board with an empty list of scores and a valid answer from provided list" do
