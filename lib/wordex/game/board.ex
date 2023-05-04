@@ -7,10 +7,13 @@ defmodule Wordex.Game.Board do
   alias Wordex.Game.Score
   alias Wordex.Game.Wordlist
 
-  # @spec new(words :: List.t()) :: board :: t
+  @spec new() :: board :: t
   def new() do
     %__MODULE__{scores: [], answer: Wordlist.generate_word()}
   end
+
+  @spec valid_word?(guess :: String.t()) :: boolean()
+  def valid_word?(guess), do: Wordlist.in_list?(guess)
 
   @spec guess(board :: t, guess :: String.t()) :: updated_board :: t
   def guess(%__MODULE__{} = board, guess) do
@@ -32,13 +35,12 @@ defmodule Wordex.Game.Board do
     Enum.reverse(scores)
   end
 
-  #color coding functions in progress using IO.ANSI
+  # color coding functions in progress using IO.ANSI
   def color_code(%__MODULE__{scores: scores} = _board) do
     IO.inspect(scores)
-
   end
 
-  def color_code_letter({letter,color}) do
+  def color_code_letter({letter, color}) do
     case color do
       :green -> IO.ANSI.format([:green_background, letter])
       :yellow -> IO.ANSI.format([:yellow_background, letter])

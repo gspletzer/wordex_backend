@@ -9,13 +9,9 @@ defmodule Wordex.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: Wordex.Worker.start_link(arg)
       {DynamicSupervisor, name: :dsup, strategy: :one_for_one}
 
-      # {Wordex.Game.Server, :batman},
-      # {Wordex.Game.Server, :dryad},
-      # {Wordex.Game.Server, :groot},
-      # {Wordex.Game.Server, :superman}
+      # EXAMPLE: {Wordex.Server, :batman}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

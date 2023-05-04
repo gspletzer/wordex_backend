@@ -15,6 +15,7 @@ defmodule Wordex.Game.Score do
   def show(%{answer: answer, guess: guess} = _score) do
     a_list = String.graphemes(answer)
     g_list = String.graphemes(guess)
+
     matched_letters = match_greens(a_list, g_list)
 
     missed_letters = g_list -- a_list
@@ -36,7 +37,7 @@ defmodule Wordex.Game.Score do
   defp mark_remaining_letters(_letters, [], acc), do: Enum.reverse(acc)
 
   defp mark_remaining_letters(letters, [{y, z} = _match | matched_letters], acc) do
-    if z == :green || Enum.empty?(letters) || not (y in letters) do
+    if z == :green || Enum.empty?(letters) || y not in letters do
       mark_remaining_letters(letters, matched_letters, [{y, z} | acc])
     else
       mark_remaining_letters(List.delete(letters, y), matched_letters, [{y, :gray} | acc])
